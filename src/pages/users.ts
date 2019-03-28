@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { IUser } from "../models/user";
-import { UserService } from "../_shared/userService";
+import { UserService } from "../_shared/services/userService";
 @Component({
     templateUrl: 'src/pages/users.html'
 })

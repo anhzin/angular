@@ -4,7 +4,7 @@ import { FormsModule } from "@angular/forms";
 import { UserRoutes } from "./userRoutes";
 import { Layout } from "./layout";
 import { Users } from "./pages/users";
-import { UserService } from "./_shared/userService";
+import { UserService } from "./_shared/services/userService";
 @NgModule({
     imports: [
         BrowserModule,
