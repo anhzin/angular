@@ -1,6 +1,6 @@
 <div class="x_panel">
     <div class="x_title">
-        <h2>Users</h2>
+        <h2>{{i18n.user.title}}</h2>
         <ul class="nav navbar-right panel_toolbox">
             <li><a title="" (click)="onAddNewUserClicked($event)"><i class="fa fa-plus"></i></a>
             </li>
@@ -12,10 +12,10 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                    <th>Actions</th>
+                    <th>{{i18n.user.firstName}}</th>
+                    <th>{{i18n.user.lastName}}</th>
+                    <th>{{i18n.user.userName}}</th>
+                    <th>{{i18n.common.actions}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,6 +31,7 @@
                 </tr>
             </tbody>
         </table>
-
+        <user-preview [user]="selectedUser" (onCancelled)="onCancelled($event)" (onSaved)="onSaved($event)">
+        </user-preview>
     </div>
 </div>

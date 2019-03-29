@@ -1,6 +1,6 @@
 import { IUser } from "../../models/user"
 export class UserService {
-    public getUsers(): IUser[] {
+    public getUsers(): Promise<IUser[]> {
         let users: IUser[] = [{
             firstName: "anh",
             lastName: "nguyen",
@@ -16,7 +16,10 @@ export class UserService {
             lastName: "le",
             userName: "le_thanh"
         }];
-        return users;
+        let promise = new Promise<IUser[]>((resolve: any, reject: any) => {
+            resolve(users);
+        });
+        return promise;
 
     }
 }
