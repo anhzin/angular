@@ -1,0 +1,39 @@
+<div class="x_panel">
+    <div class="x_title">
+        <h2>{{i18n.user.title}}</h2>
+        <ul class="nav navbar-right panel_toolbox">
+            <li><a><i class="fa fa-plus" (click)="onAddNewUserClicked($event)"></i></a>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>{{i18n.user.firstName}}</th>
+                    <th>{{i18n.user.lastName}}</th>
+                    <th>{{i18n.user.userName}}</th>
+                    <th>{{i18n.common.actions}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users; let index = index;">
+                    <th scope="row">{{index + 1}}</th>
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.userName}}</td>
+                    <td>
+                        <a><i class="fa fa-circle" (click)="onPreviewUserClicked(user)"></i></a>
+                        <a><i class="fa fa-pencil" (click)="onEditUserClicked(user)"></i></a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <user-preview [user]="selectedUser" (onCancelled)="onCancelled($event)" (onSaved)="onSaved($event)">
+        </user-preview>
+    </div>
+</div>
