@@ -3,9 +3,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
 import { UserRoutes } from "./userRoutes";
 import { Layout } from "./layout";
-import { Users } from "./pages/users";
-import { UserService } from "./_shared/services/userService";
-import { UserPreview } from "./_shared/components/userPreview";
+import {Users} from "../src/pages/users";
+import {UserPreview} from "../src/_shared/components/userPreview";
 @NgModule({
     imports: [
         BrowserModule,
@@ -13,7 +12,6 @@ import { UserPreview } from "./_shared/components/userPreview";
         UserRoutes
     ],
     declarations: [Layout, Users, UserPreview],
-    providers: [UserService],
     bootstrap: [Layout]
 })
 export class UserModule { }

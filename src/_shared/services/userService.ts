@@ -1,25 +1,17 @@
-import { IUser } from "../../models/user"
-export class UserService {
-    public getUsers(): Promise<IUser[]> {
-        let users: IUser[] = [{
-            firstName: "anh",
-            lastName: "nguyen",
-            userName: "nguyen_anh"
-        },
-        {
-            firstName: "zin",
-            lastName: "zin",
-            userName: "zin_zin"
-        },
-        {
-            firstName: "thanh",
-            lastName: "le",
-            userName: "le_thanh"
-        }];
-        let promise = new Promise<IUser[]>((resolve: any, reject: any) => {
-            resolve(users);
-        });
-        return promise;
+import { IUserService } from "./iuserService";
+import {Promise, PromiseFactory} from "../../models/promise";
+import {IUser} from "../../models/user";
+export class UserService implements IUserService {
+    public getUsers(): Promise {
+        let users: Array<IUser> = [
+            { firstName: "anh", lastName: "nguyen", userName: "anhnguyen" },
+            { firstName: "anh1", lastName: "nguyen", userName: "anhnguyen1" },
+            { firstName: "anh2", lastName: "nguyen", userName: "anhnguyen2" },
+            { firstName: "anh3", lastName: "nguyen", userName: "anhnguyen3" },
+        ];
 
+        let promise = PromiseFactory.create();
+        promise.resolve(users);
+        return promise;
     }
 }

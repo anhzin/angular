@@ -1,32 +1,45 @@
-import { Component } from "@angular/core";
-import { IUser } from "../models/user";
-import { UserService } from "../_shared/services/userService";
-import { BasePage } from "../models/basePage";
+import {Component} from "@angular/core";
+import {BasePage} from "../models/basePage";
+import {IUser} from "../models/user";
+import {IUserService} from "../_shared/services/iuserService";
+import {IoCNames} from "../_shared/common/enums";
 @Component({
     templateUrl: 'src/pages/users.html'
 })
 export class Users extends BasePage {
-    public users: IUser[];
-    public selectedUser: IUser;
 
-    constructor(userService: UserService) {
+    public users: Array<IUser> = [];
+    public selectedUser: IUser;
+    constructor() {
         super();
         let self = this;
-        userService.getUsers().then((users: any) => {
+        let userService: IUserService = window.ioc.resolve(IoCNames.IUserService);
+        userService.getUsers().then((users: Array<IUser>) => {
             self.users = users;
         });
     }
 
-    public onAddNewUserClicked(): void { }
-    public onPreviewUserInformationClicked(user: any): void {
+
+    public onAddNewUserClicked(): void {
+
+    }
+
+    public onEditUserClicked(user: any): void {
+
+    }
+
+    public onPreviewUserClicked(user: any): void {
         this.selectedUser = user.clone();
     }
-    public onEditUserClicked(user: IUser): void { }
+
     public onCancelled(): void {
         this.selectedUser = null;
     }
-    public onSaved(selectedUser: any): void {
-        let user = this.users.firstOrDefault((user: any) => { return user.userName == selectedUser.userName; });
+
+    public onSaved(selectedUser: IUser): void {
+        let user = this.users.firstOrDefault((item: IUser) => {
+            return item.userName == selectedUser.userName;
+        });
         if (user) {
             user.firstName = selectedUser.firstName;
             user.lastName = selectedUser.lastName;
