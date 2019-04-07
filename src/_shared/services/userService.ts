@@ -1,17 +1,11 @@
 import { IUserService } from "./iuserService";
-import {Promise, PromiseFactory} from "../../models/promise";
-import {IUser} from "../../models/user";
+import { Promise} from "../../models/promise";
+import { IoCNames } from "../common/enums";
+import {IConnector} from "../connector/iConnector";
 export class UserService implements IUserService {
     public getUsers(): Promise {
-        let users: Array<IUser> = [
-            { firstName: "anh", lastName: "nguyen", userName: "anhnguyen" },
-            { firstName: "anh1", lastName: "nguyen", userName: "anhnguyen1" },
-            { firstName: "anh2", lastName: "nguyen", userName: "anhnguyen2" },
-            { firstName: "anh3", lastName: "nguyen", userName: "anhnguyen3" },
-        ];
-
-        let promise = PromiseFactory.create();
-        promise.resolve(users);
-        return promise;
+        let iConnector: IConnector = window.ioc.resolve(IoCNames.IConnector);
+        let url: string = "/api/users.json";
+        return iConnector.get(url);
     }
 }

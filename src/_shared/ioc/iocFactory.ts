@@ -1,21 +1,25 @@
-import { ErrorMessages } from "../common/enums";
+import { ErrorMessages, IoCNames } from "../common/enums";
 import { IoCBuilderFactory } from "../ioc/builder/iocBuilderFactory";
-import {IIoCBuilder} from "./builder/iiocBuilder";
+import { IIoCBuilder } from "./builder/iiocBuilder";
+import {IAppSettingService} from "../services/iAppSettingService";
 export class IoCFactory {
     public static create(): IoCContainer {
         return new IoCContainer();
     }
 }
 
-class IoCContainer {
-    public registrations: Array<IIoCRegistration>=[];
+class IoCContainer implements IIoCContainer {
+    public registrations: Array<IIoCRegistration> = [];
     public import(registrations: Array<IIoCRegistration>): void {
         this.registrations = registrations;
     }
 
-    public resolve(name: string): IIoCRegistration {
+    public resolve(nameOrType: string): IIoCRegistration {
+        if (typeof (nameOrType) == "function") {
+            return this.processAngularInjection(nameOrType);
+        }
         let registration = this.registrations.firstOrDefault((item: IIoCRegistration) => {
-            return item.name == name;
+            return item.name == nameOrType;
         });
 
         if (!registration) {
@@ -24,5 +28,12 @@ class IoCContainer {
 
         let iocBuilder: IIoCBuilder = IoCBuilderFactory.create(registration);
         return iocBuilder.build(registration);
+    }
+
+    private processAngularInjection(nameOrType: any): any {
+        let appSettingService: IAppSettingService = window.ioc.resolve(IoCNames.IAppSettingService);
+        let injector = appSettingService.getInjector();
+        return injector.get(nameOrType);
+
     }
 }

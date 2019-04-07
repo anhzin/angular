@@ -8,5 +8,8 @@
         "**/*.css": {
             "when": "$(basename).scss"
         }
-    }
+    },
+    "cSpell.words": [
+        "Serrvice"
+    ]
 }

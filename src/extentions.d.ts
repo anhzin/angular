@@ -16,7 +16,7 @@ declare interface Window {
 
 declare interface IIoCContainer {
     import(registrations: Array<IIoCRegistration>): void;
-    resolve(name: string): any;
+    resolve(nameOrType: any): any;
 }
 
 declare interface IIoCRegistration {

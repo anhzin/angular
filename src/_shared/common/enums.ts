@@ -1,5 +1,7 @@
 export enum IoCNames {
-    IUserService = "IUserService"
+    IUserService = "IUserService",
+    IAppSettingService = "IAppSettingService",
+    IConnector = "IConnector"
 }
 
 export enum IIoCLifeCycle {
