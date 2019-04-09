@@ -1,8 +1,9 @@
-import {Component} from "@angular/core";
-import {BasePage} from "../models/basePage";
-import {IUser} from "../models/user";
-import {IUserService} from "../_shared/services/iuserService";
-import {IoCNames} from "../_shared/common/enums";
+import { Component } from "@angular/core";
+import { BasePage } from "../models/basePage";
+import { IUser } from "../models/user";
+import { IUserService } from "../_shared/services/iuserService";
+import { IoCNames, LanguageCodes, IconSize } from "../_shared/common/enums";
+import { IResourceManager } from "../_shared/services/iresourceManager";
 @Component({
     templateUrl: 'src/pages/users.html'
 })
@@ -10,6 +11,10 @@ export class Users extends BasePage {
 
     public users: Array<IUser> = [];
     public selectedUser: IUser;
+    public ENUMS: any = {
+        LanguageCodes: LanguageCodes,
+        IconSize: IconSize
+    };
     constructor() {
         super();
         let self = this;
@@ -25,7 +30,7 @@ export class Users extends BasePage {
     }
 
     public onEditUserClicked(user: any): void {
-
+        console.log(user);
     }
 
     public onPreviewUserClicked(user: any): void {

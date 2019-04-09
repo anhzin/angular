@@ -16,7 +16,7 @@ export class Promise {
     public onError: any = null;
     public onSuccess: any = null;
     private status: PromiseStatus = PromiseStatus.None;
-    public resolve(data: any): Promise {
+    public resolve(data?: any): Promise {
         this.status = PromiseStatus.Success;
         this.data = data;
         this.processCallback();

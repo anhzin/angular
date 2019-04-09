@@ -26,10 +26,13 @@
                     <td>{{user.lastName}}</td>
                     <td>{{user.userName}}</td>
                     <td>
-                        <a>
+                        <icon-preview [size]="ENUMS.IconSize.Small" (onClicked)="onPreviewUserClicked(user)"></icon-preview>
+
+                        <icon-edit [size]="ENUMS.IconSize.Small" (onClicked)="onEditUserClicked(user)"></icon-edit>
+                        <!-- <a>
                             <i class="fa fa-circle" (click)="onPreviewUserClicked(user)"></i>
                             <i class="fa fa-pencil" (click)="onEditUserClicked(user)"></i>
-                        </a>
+                        </a> -->
                     </td>
                 </tr>
             </tbody>

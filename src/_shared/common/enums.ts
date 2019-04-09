@@ -1,7 +1,8 @@
 export enum IoCNames {
     IUserService = "IUserService",
     IAppSettingService = "IAppSettingService",
-    IConnector = "IConnector"
+    IConnector = "IConnector",
+    IResourceManager = "IResourceManager"
 }
 
 export enum IIoCLifeCycle {
@@ -12,4 +13,15 @@ export enum IIoCLifeCycle {
 export enum ErrorMessages {
     InvalidService = "Invalid service {0}",
     InvalidLifeCycle = "Invalid life cycle"
+}
+export enum LanguageCodes {
+    EN = "en",
+    VN = "vn"
+}
+
+
+export enum IconSize {
+    Small = 1,
+    Normal = 2,
+    Large = 3
 }
