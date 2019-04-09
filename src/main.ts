@@ -1,5 +1,5 @@
 
-/// <preference path="extentions.d.ts">
+/// <preference path="extensions.d.ts">
 import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 import { UserModule } from "./userModule";
 import { IoCFactory } from "../src/_shared/ioc/iocFactory";

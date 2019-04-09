@@ -10,6 +10,10 @@ declare interface String {
     format(...parameters: string[]): string;
 }
 
+declare interface StringConstructor {
+    format(...parameters: string[]): string;
+}
+
 declare interface Window {
     ioc: IIoCContainer;
 }
