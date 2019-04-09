@@ -16,7 +16,7 @@
                     <th>{{i18n.user.firstName}}</th>
                     <th>{{i18n.user.lastName}}</th>
                     <th>{{i18n.user.userName}}</th>
-                    <th>{{i18n.common.actions}}</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,15 +26,15 @@
                     <td>{{user.lastName}}</td>
                     <td>{{user.userName}}</td>
                     <td>
-                        <a>
-                            <i class="fa fa-circle" (click)="onPreviewUserClicked(user)"></i>
-                            <i class="fa fa-pencil" (click)="onEditUserClicked(user)"></i>
-                        </a>
+                        <icon-preview [size]="ENUMS.IconSize.Normal" (onClicked)="onPreviewUserClicked(user)"></icon-preview>
+                        <icon-edit [size]="ENUMS.IconSize.Normal" (onClicked)="onEditUserClicked(user)"></icon-edit>
                     </td>
                 </tr>
             </tbody>
         </table>
 
+        <button type="button" (click)="onChangeLanguageCode(ENUMS.LanguageCodes.EN)">EN</button>
+        <button type="button" (click)="onChangeLanguageCode(ENUMS.LanguageCodes.VN)">VN</button>
         <user-preview [user]="selectedUser" (onCancelled)="onCancelled($event)" (onSaved)="onSaved($event)"></user-preview>
     </div>
 </div>
