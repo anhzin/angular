@@ -1,3 +1,5 @@
+import guidHelper from "../_shared/helpers/guidHelper";
+
 export class PromiseFactory {
     public static create(): Promise {
         return new Promise();
@@ -7,17 +9,49 @@ export class PromiseFactory {
 enum PromiseStatus {
     None = 0,
     Success = 1,
-    Failed = 2
+    Failed = 2,
+    Subscribe = 3
 }
 
 export class Promise {
-    public data: any = null;
-    public error: any = null;
-    public onError: any = null;
-    public onSuccess: any = null;
+    private data: any = null;
+    private error: any = null;
+    private subscribeCallBack: any;
+    private onError: any = null;
+    private onSuccess: any = null;
+    private onSubscribe: any = null;
     private status: PromiseStatus = PromiseStatus.None;
+    private queue: Array<string> = [];
+    private id: string = guidHelper.newGuid();
+
+
+    public resolveAll(def: Promise): Promise {      
+        let self = this;
+        this.queue.push(def.id);
+        console.log(this.queue);
+        def.subscribe((pro: Promise) => {
+            self.onPromiseCompleted(pro);
+        });
+        return this;
+    }
+
+    private onPromiseCompleted(pro: Promise): Promise {
+        this.queue =   this.queue.remove(pro.id);
+        console.log("onPromiseCompleted");
+        if (this.queue.isEmpty()) {
+            this.status = PromiseStatus.Success;
+            this.processCallback();
+        }
+        return this;
+    }
+
+    private subscribe(subscribeCallBack: any): Promise {
+        this.status = PromiseStatus.Subscribe;
+        this.subscribeCallBack = subscribeCallBack;
+        return this;
+    }
     public resolve(data?: any): Promise {
-        this.status = PromiseStatus.Success;
+        this.status = this.status != PromiseStatus.Subscribe? PromiseStatus.Success: this.status;
         this.data = data;
         this.processCallback();
         return this;
@@ -51,6 +85,10 @@ export class Promise {
 
         if (this.onSuccess && this.status == PromiseStatus.Success) {
             this.onSuccess(this.data);
+        }
+
+        if (this.subscribeCallBack && this.status == PromiseStatus.Subscribe) {
+            this.subscribeCallBack(this);
         }
     }
 }

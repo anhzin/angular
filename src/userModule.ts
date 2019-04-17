@@ -12,6 +12,8 @@ import { IResourceManager } from "./_shared/services/iresourceManager";
 import {BaseIcon} from "../src/_shared/components/icons/baseIcon";
 import {IconEdit} from "../src/_shared/components/icons/iconEdit";
 import {IconPreview} from "../src/_shared/components/icons/iconPreview";
+import { Page } from "./_shared/components/layout/page";
+import { PageContent } from "./_shared/components/layout/pageContent";
 @NgModule({
     imports: [
         BrowserModule,
@@ -19,7 +21,7 @@ import {IconPreview} from "../src/_shared/components/icons/iconPreview";
         UserRoutes,
         HttpModule
     ],
-    declarations: [Layout, Users, UserPreview, BaseIcon, IconEdit, IconPreview],
+    declarations: [Layout, Users, UserPreview, BaseIcon, IconEdit, IconPreview, Page, PageContent],
     entryComponents: [Layout]
     // bootstrap: [Layout]
 })
@@ -34,8 +36,9 @@ export class UserModule {
 
     ngDoBootstrap() {
         let resourceManage: IResourceManager = window.ioc.resolve(IoCNames.IResourceManager);
-        let locales: any = ["user"];
+        let locales: any = ["user","common"];
         resourceManage.loadLocales(locales).then(() => {
+            console.log("a");
             this.appRef.bootstrap(Layout);
         });
 

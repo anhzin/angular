@@ -1,5 +1,8 @@
 declare interface Array<T> {
     firstOrDefault(predicate?: any): T;
+    remove(item: any): any;
+    removeIf(predicate?: any): void;
+    isEmpty():boolean;
 }
 
 declare interface Object {

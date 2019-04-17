@@ -11,6 +11,27 @@ Array.prototype.firstOrDefault = function(predicate) {
     }
 }
 
+Array.prototype.isEmpty = function() {
+    return this.length == 0;
+}
+
+Array.prototype.removeIf = function(callback) {
+    var i = 0;
+    while (i < this.length) {
+        if (callback(this[i], i)) {
+            this.splice(i, 1);
+        } else {
+            ++i;
+        }
+    }
+};
+
+Array.prototype.remove = function(item) {
+    var index = this.indexOf(item);
+    if (index !== -1) this.splice(index, 1);
+    return this;
+};
+
 Object.prototype.clone = function() {
     return JSON.parse(JSON.stringify(this));
 }

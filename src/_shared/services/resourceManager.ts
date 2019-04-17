@@ -21,9 +21,7 @@ export class ResourceManager implements IResourceManager {
         let promise = PromiseFactory.create();
         let self = this;
         locales.forEach(name => {
-            self.getLocaleByName(name).then(() => {
-                promise.resolve();
-            });
+            promise.resolveAll(self.getLocaleByName(name));
         });
         return promise;
     }
