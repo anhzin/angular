@@ -1,4 +1,9 @@
 <page [title]="i18n.user.title">
+    <page-commands>
+        <a (click)="onAddNewUserClicked($event)">
+            <i class="fa fa-plus"></i>
+        </a>
+    </page-commands>
     <page-content>
         <table class="table">
             <thead>

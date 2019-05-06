@@ -1,0 +1,46 @@
+<page [title]="i18n.addNewUser.title">
+    <page-content>
+        <form-horizontal>
+            <form-text-input [validation]="['addNewUser.firstNameWasRequired']" [label]="i18n.addNewUser.firstName" [(model)]="model.firstName"></form-text-input>
+            <form-text-input [validation]="['addNewUser.lastNameWasRequired']" [label]="i18n.addNewUser.lastName" [(model)]="model.lastName"></form-text-input>
+            <form-text-input [validation]="['addNewUser.userNameWasRequired']" [label]="i18n.addNewUser.userName" [(model)]="model.userName"></form-text-input>
+            <form-buttons>
+                <primary-button (onClicked)="onSaveClicked($event)" [label]="i18n.common.form.save"></primary-button>
+                <default-button (onClicked)="onCancelClicked($event)" [label]="i18n.common.form.cancel"></default-button>
+            </form-buttons>
+        </form-horizontal>
+        <!-- <form data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">{{i18n.addNewUser.firstName}} <span class="required">*</span>
+          </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" name="first-name" [(ngModel)]="model.firstName" required="required" class="form-control col-md-7 col-xs-12">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">{{i18n.addNewUser.lastName}}<span class="required">*</span>
+          </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" name="last-name" [(ngModel)]="model.lastName" required="required" class="form-control col-md-7 col-xs-12">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">{{i18n.addNewUser.userName}}<span class="required">*</span>
+          </label>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="text" name="user-name" [(ngModel)]="model.userName" required="required" class="form-control col-md-7 col-xs-12">
+                </div>
+            </div>
+            <div class="ln_solid"></div>
+            <div class="form-group">
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                    <button type="submit" class="btn btn-primary" (click)="onSaveClicked($event)">{{i18n.common.form.save}}</button>
+                    <button type="submit" class="btn btn-default" (click)="onCancelClicked($event)">{{i18n.common.form.cancel}}</button>
+                </div>
+            </div>
+
+        </form> -->
+
+    </page-content>
+</page>

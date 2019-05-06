@@ -4,6 +4,7 @@ import { IUser } from "../models/user";
 import { IUserService } from "../_shared/services/iuserService";
 import { IoCNames, LanguageCodes, IconSize } from "../_shared/common/enums";
 import { IResourceManager } from "../_shared/services/iresourceManager";
+import { Router } from "@angular/router";
 @Component({
     templateUrl: 'src/pages/users.html'
 })
@@ -14,12 +15,11 @@ export class Users extends BasePage {
     }
     public users: Array<IUser> = [];
     public selectedUser: IUser;
-    constructor() {
+    private router: Router;
+    constructor(router: Router) {
         super();
         let self = this;
-
-        let resourceManager: IResourceManager = window.ioc.resolve(IoCNames.IResourceManager);
-        this.i18n = resourceManager.getLocales();
+        self.router = router;
         let userService: IUserService = window.ioc.resolve(IoCNames.IUserService);
         userService.getUsers().then((users: Array<IUser>) => {
             self.users = users;
@@ -31,7 +31,7 @@ export class Users extends BasePage {
         resourceManager.changeLanguageCode(languageCode);
     }
     public onAddNewUserClicked(): void {
-
+        this.router.navigate(['addNewUser']);
     }
 
     public onEditUserClicked(user: any): void {

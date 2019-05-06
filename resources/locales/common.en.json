@@ -1,4 +1,12 @@
 {
     "save": "Save",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "form": {
+        "save": "Save",
+        "cancel": "Cancel"
+    },
+    "language": {
+        "en": "EN",
+        "vn": "VN"
+    }
 }
