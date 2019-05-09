@@ -1,4 +1,7 @@
 {
-    "save": "Save",
-    "cancel": "Cancel"
+    "form": {
+        "save": "Save",
+        "cancel": "Cancel"
+
+    }
 }
