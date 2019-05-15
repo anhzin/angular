@@ -10,15 +10,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>tranthanhtu.vn - Angular2</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
     <script src="node_modules/core-js/client/shim.min.js"></script>
     <script src="node_modules/zone.js/dist/zone.js"></script>
     <script src="node_modules/reflect-metadata/reflect.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <script src="/resources/js/extensions.js"></script>
     <script>
         window.autoBootstrap = false;
     </script>
     <script src="systemjs.config.js"></script>
-    <script src="/resources/js/extensions.js"></script>
     <!-- Bootstrap -->
     <link href="/resources/theme/gentallela/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -32,12 +34,14 @@
 
     <!-- Custom Theme Style -->
     <link href="/resources/theme/gentallela/css/custom.css" rel="stylesheet">
+    <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
 </head>
 
 <body>
     <div>
         <layout>default page will be here.</layout>
     </div>
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     <script>
         System.import("src/main").catch(function(error) {
             console.log(error);

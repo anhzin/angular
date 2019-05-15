@@ -26,3 +26,7 @@ export enum IconSize {
     Normal = 2,
     Large = 3
 }
+export interface IEventArg {
+    key: string;
+    options?: any;
+}

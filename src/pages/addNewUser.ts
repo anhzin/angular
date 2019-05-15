@@ -38,15 +38,15 @@ export class AddNewUser extends BasePage {
             return false;
         }
         let eventManager: IEventManager = window.ioc.resolve(IoCNames.IEventManager);
-        if (this.model.firstName.trim() == "") {
+        if (!this.model.firstName || this.model.firstName.trim() == "") {
             eventManager.publish("addNewUser.firstNameWasRequired");
             return false;
         }
-        if (this.model.lastName.trim() == "") {
+        if (!this.model.lastName || this.model.lastName.trim() == "") {
             eventManager.publish("addNewUser.lastNameWasRequired");
             return false;
         }
-        if (this.model.userName.trim() == "") {
+        if (!this.model.userName || this.model.userName.trim() == "") {
             eventManager.publish("addNewUser.userNameWasRequired");
             return false;
         }

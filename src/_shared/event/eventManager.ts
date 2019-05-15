@@ -11,13 +11,13 @@ export class EventManager implements IEventManager {
     subscribe(key: string, value: any): void {
         this.keys.add(key, value);
     }
-    publish(key: string): void {
+    publish(key: string, options?: any): void {
         let handle = this.keys.get(key);
         if (!handle) {
             console.log(key + " was not found");
             return;
         }
 
-        handle({ key: key });
+        handle({ key: key, options: options });
     }
 }

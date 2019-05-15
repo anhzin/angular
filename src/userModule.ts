@@ -22,6 +22,7 @@ import { PrimaryButton } from "./_shared/components/forms/primaryButton";
 import { DefaultButton } from "./_shared/components/forms/defaultButton";
 import { Validation } from "./_shared/components/validation";
 import { AddNewUser } from "./pages/addNewUser";
+import { Grid } from "./_shared/components/grid/grid";
 @NgModule({
     imports: [
         BrowserModule,
@@ -30,7 +31,7 @@ import { AddNewUser } from "./pages/addNewUser";
         HttpModule
     ],
     declarations: [Layout, Users, UserPreview, BaseIcon, IconEdit, IconPreview, Page, PageContent, PageCommand,
-        FormHorizontal, FormInputText, FormButtons, PrimaryButton, DefaultButton, Validation, AddNewUser],
+        FormHorizontal, FormInputText, FormButtons, PrimaryButton, DefaultButton, Validation, AddNewUser, Grid],
     entryComponents: [Layout]
     // bootstrap: [Layout]
 })

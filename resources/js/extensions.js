@@ -32,9 +32,9 @@ Array.prototype.remove = function(item) {
     return this;
 };
 
-Object.prototype.clone = function() {
-    return JSON.parse(JSON.stringify(this));
-}
+// Object.prototype.clone = function() {
+//     return JSON.parse(JSON.stringify(this));
+// }
 
 String.prototype.format = function() {
     var args = arguments;

@@ -3,5 +3,6 @@
     "firstName": "First Name",
     "lastName": "Last Name",
     "userName": "User Name",
-    "userPreview": "User Preview"
+    "userPreview": "User Preview",
+    "status": "Status"
 }

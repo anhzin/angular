@@ -2,7 +2,7 @@ declare interface Array<T> {
     firstOrDefault(predicate?: any): T;
     remove(item: any): any;
     removeIf(predicate?: any): void;
-    isEmpty():boolean;
+    isEmpty(): boolean;
 }
 
 declare interface Object {
@@ -19,6 +19,7 @@ declare interface StringConstructor {
 
 declare interface Window {
     ioc: IIoCContainer;
+    jQuery: any;
 }
 
 declare interface IIoCContainer {
