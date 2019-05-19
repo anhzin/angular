@@ -23,6 +23,7 @@ import { DefaultButton } from "./_shared/components/forms/defaultButton";
 import { Validation } from "./_shared/components/validation";
 import { AddNewUser } from "./pages/addNewUser";
 import { Grid } from "./_shared/components/grid/grid";
+import { UserGroups } from "./pages/userGroups";
 @NgModule({
     imports: [
         BrowserModule,
@@ -30,8 +31,13 @@ import { Grid } from "./_shared/components/grid/grid";
         UserRoutes,
         HttpModule
     ],
-    declarations: [Layout, Users, UserPreview, BaseIcon, IconEdit, IconPreview, Page, PageContent, PageCommand,
-        FormHorizontal, FormInputText, FormButtons, PrimaryButton, DefaultButton, Validation, AddNewUser, Grid],
+    declarations: [
+        Layout, Users, UserPreview,
+        BaseIcon, IconEdit, IconPreview,
+        Page, PageContent, PageCommand,
+        FormHorizontal, FormInputText, FormButtons, PrimaryButton, DefaultButton, Validation,
+        AddNewUser, UserGroups,
+        Grid],
     entryComponents: [Layout]
     // bootstrap: [Layout]
 })
@@ -46,7 +52,7 @@ export class UserModule {
 
     ngDoBootstrap() {
         let resourceManage: IResourceManager = window.ioc.resolve(IoCNames.IResourceManager);
-        let locales: any = ["user", "common", "addNewUser"];
+        let locales: any = ["user", "common", "addNewUser","userGroups"];
         resourceManage.loadLocales(locales).then(() => {
             this.appRef.bootstrap(Layout);
         });

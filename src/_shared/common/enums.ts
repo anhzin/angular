@@ -3,7 +3,8 @@ export enum IoCNames {
     IAppSettingService = "IAppSettingService",
     IConnector = "IConnector",
     IResourceManager = "IResourceManager",
-    IEventManager = "IEventManager"
+    IEventManager = "IEventManager",
+    IUserGroupService = "IUserGroupService"
 }
 
 export enum IIoCLifeCycle {
