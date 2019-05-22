@@ -12,12 +12,12 @@ export class EventManager implements IEventManager {
         this.keys.add(key, value);
     }
     publish(key: string, options?: any): void {
-        let handle = this.keys.get(key);
-        if (!handle) {
+        let handler = this.keys.get(key);
+        if (!handler) {
             console.log(key + " was not found");
             return;
         }
 
-        handle({ key: key, options: options });
+        handler({ key: key, options: options });
     }
 }

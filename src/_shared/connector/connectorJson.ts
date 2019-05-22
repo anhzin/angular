@@ -18,7 +18,7 @@ export class ConnectorJson implements IConnector {
     public post(url: string, model: any): Promise {
         let promise = PromiseFactory.create();
         let http: Http = window.ioc.resolve(Http);
-        http.post(url, model).map(response => response.json())
+        http.post(url, model.ToJson()).map(response => response.json())
             .subscribe((data: any) => {
                 promise.resolve(data);
             }, (error: any) => {

@@ -31,3 +31,10 @@ export interface IEventArg {
     key: string;
     options?: any;
 }
+export const ValidationStatus = {
+    Success: 1
+}
+
+export const ClassConst = {
+    Metadata: "__metadata"
+}

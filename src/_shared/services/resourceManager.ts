@@ -37,4 +37,12 @@ export class ResourceManager implements IResourceManager {
         return promise;
     }
 
+    public resolve(key: string): string {
+        let result = this.locales;
+        let segments = key.split(".");
+        segments.forEach((segment: string) => {
+            result = result[segment]
+        });
+        return result;
+    }
 }

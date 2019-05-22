@@ -20,6 +20,12 @@ declare interface StringConstructor {
 declare interface Window {
     ioc: IIoCContainer;
     jQuery: any;
+    Reflect: IReflect;
+}
+
+declare interface IReflect {
+    getMetadata(name: string, constructor: any): any;
+    defineMetadata(name: string, constructor: any, ctor: any): void;
 }
 
 declare interface IIoCContainer {

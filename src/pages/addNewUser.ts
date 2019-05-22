@@ -20,7 +20,7 @@ export class AddNewUser extends BasePage {
 
     public onSaveClicked(): void {
 
-        if (!this.isValid()) {
+        if (!this.model.isValid()) {
             console.log("invalid");
             return;
         }
@@ -29,28 +29,6 @@ export class AddNewUser extends BasePage {
         userService.createUser(this.model).then(() => {
             this.router.navigate(["users"]);
         });
-    }
-
-    private isValid(): boolean {
-        let isValid = true;
-        if (this.model == null) {
-            console.log("model null");
-            return false;
-        }
-        let eventManager: IEventManager = window.ioc.resolve(IoCNames.IEventManager);
-        if (!this.model.firstName || this.model.firstName.trim() == "") {
-            eventManager.publish("addNewUser.firstNameWasRequired");
-            return false;
-        }
-        if (!this.model.lastName || this.model.lastName.trim() == "") {
-            eventManager.publish("addNewUser.lastNameWasRequired");
-            return false;
-        }
-        if (!this.model.userName || this.model.userName.trim() == "") {
-            eventManager.publish("addNewUser.userNameWasRequired");
-            return false;
-        }
-        return isValid;
     }
 
     public onCancelClicked() {
