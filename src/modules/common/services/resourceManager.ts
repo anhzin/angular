@@ -1,6 +1,6 @@
-import { LanguageCodes, IoCNames } from "../../models/enums";
+import { LanguageCodes, IoCNames } from "../models/enums";
 import { IResourceManager } from "./iresourceManager";
-import { Promise, PromiseFactory } from "../../models/promise";
+import { Promise, PromiseFactory } from "../models/promise";
 import { IConnector } from "../connector/iConnector";
 export class ResourceManager implements IResourceManager {
     private locales: any = {};

@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
-import { BasePage } from "../../models/basePage";
+import { BasePage } from "@app/common";
 import { IUser } from "../../models/user";
 
 @Component({

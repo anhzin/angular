@@ -1,8 +1,8 @@
 import { Component, Input, AfterContentInit, DoCheck } from "@angular/core";
-import { BaseComponent } from "../../../models/baseComponent";
-import { IEventArg } from "../../../models/enums";
-import { Promise } from "../../../models/promise";
-import guidHelper from "../../helpers/guidHelper";
+import { BaseComponent } from "../../models/baseComponent";
+import { IEventArg } from "../../models/enums";
+import guidHelper from "../../../../_shared/helpers/guidHelper";
+import { IGridColumn, IGridItemAction, IGridOption } from "../../models/grid";
 @Component({
     selector: "grid",
     template: `<table id ="{{id}}" class="table"></table>`
@@ -105,22 +105,4 @@ export class Grid extends BaseComponent implements AfterContentInit, DoCheck {
         });
         return html;
     }
-}
-
-export interface IGridOption {
-    dataSource: Promise,
-    columns: Array<IGridColumn>;
-    actions: Array<IGridItemAction>;
-}
-export interface IGridColumn {
-    field: string;
-    title: string;
-    transform?: (val: any) => string;
-}
-
-export interface IGridItemAction {
-    text: string;
-    handler: (dataItem: any) => void;
-    isValid?: (dataItem: any) => boolean;
-    id?: string;
 }

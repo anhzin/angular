@@ -1,6 +1,6 @@
 import { IEventManager } from "./ieventManager";
-import { IHashable } from "../../models/hash/ihashable";
-import { Hashable } from "../../models/hash/hashable";
+import { IHashable } from "../models/hash/ihashable";
+import { Hashable } from "../models/hash/hashable";
 
 export class EventManager implements IEventManager {
     private keys: IHashable;

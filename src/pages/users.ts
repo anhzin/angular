@@ -1,12 +1,10 @@
 import { Component, AfterContentInit, DoCheck } from "@angular/core";
-import { BasePage } from "../models/basePage";
+import { BasePage } from "@app/common";
 import { IUser } from "../models/user";
 import { IUserService } from "../_shared/services/iuserService";
-import { IoCNames, LanguageCodes, IconSize } from "../models/enums";
-import { IResourceManager } from "../_shared/services/iresourceManager";
+import { IoCNames } from "@app/common";
 import { Router } from "@angular/router";
 import { UsersModel } from "./usersModel";
-import { IEventManager } from "../_shared/event/ieventManager";
 
 @Component({
     template: `<page [title]="i18n.user.title">

@@ -1,10 +1,9 @@
 import { Component } from "@angular/core";
-import { BasePage } from "../models/basePage";
+import { BasePage } from "@app/common";
 import { AddNewUserModel } from "./addNewUserModel";
 import { Router } from "@angular/router";
 import { IUserService } from "../_shared/services/iuserService";
-import { IoCNames } from "../models/enums";
-import { IEventManager } from "../_shared/event/ieventManager";
+import { IoCNames } from "@app/common";
 
 @Component({
     templateUrl: "src/pages/addNewUser.html"

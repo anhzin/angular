@@ -1,7 +1,7 @@
 import { Http } from "@angular/http";
 import "rxjs/Rx";
-import { Promise, PromiseFactory } from "../../models/promise";
-import { IConnector } from "../connector/iConnector";
+import { Promise, PromiseFactory } from "../models/promise";
+import { IConnector } from "./iConnector";
 export class ConnectorJson implements IConnector {
     public get(url: string): Promise {
         let promise = PromiseFactory.create();

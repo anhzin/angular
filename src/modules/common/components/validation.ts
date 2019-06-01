@@ -1,7 +1,7 @@
 import { Directive, Input, ElementRef, AfterContentInit } from "@angular/core";
-import { IoCNames, ValidationStatus } from "../../models/enums";
+import { IoCNames, ValidationStatus } from "../models/enums";
 import { IEventManager } from "../event/ieventManager";
-import { BaseComponent } from "../../models/baseComponent";
+import { BaseComponent } from "../models/baseComponent";
 
 @Directive({
     selector: "[validation]"

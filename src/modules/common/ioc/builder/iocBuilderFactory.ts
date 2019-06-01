@@ -1,4 +1,4 @@
-import { IIoCLifeCycle, ErrorMessages } from "../../../models/enums";
+import { IIoCLifeCycle, ErrorMessages } from "../../models/enums";
 import { SingletonBuilder } from "./singletonBuilder";
 import { TransientBuilder } from "./transientBuilder";
 export class IoCBuilderFactory {

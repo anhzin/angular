@@ -1,4 +1,4 @@
-import guidHelper from "../_shared/helpers/guidHelper";
+import guidHelper from "../../../_shared/helpers/guidHelper";
 
 export class PromiseFactory {
     public static create(): Promise {

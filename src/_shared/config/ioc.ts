@@ -1,9 +1,9 @@
-import { IoCNames, IIoCLifeCycle } from "../../models/enums";
+import { IoCNames, IIoCLifeCycle } from "@app/common";
 import { UserService } from "../services/userService";
-import { AppSettingService } from "../services/appSettingService";
-import { ConnectorJson } from "../connector/connectorJson";
-import { ResourceManager } from "../services/resourceManager";
-import { EventManager } from "../event/eventManager";
+import { AppSettingService } from "@app/common";
+import { ConnectorJson } from "@app/common";
+import { ResourceManager } from "@app/common";
+import { EventManager } from "@app/common";
 import {UserGroupService} from "../services/userGroupService";
 let registrations: Array<IIoCRegistration> = [
     { name: IoCNames.IUserService, instanceOf: UserService, lifeCycle: IIoCLifeCycle.Transient },

@@ -1,5 +1,5 @@
-import { ErrorMessages, IoCNames } from "../../models/enums";
-import { IoCBuilderFactory } from "../ioc/builder/iocBuilderFactory";
+import { ErrorMessages, IoCNames } from "../models/enums";
+import { IoCBuilderFactory } from "./builder/iocBuilderFactory";
 import { IIoCBuilder } from "./builder/iiocBuilder";
 import {IAppSettingService} from "../services/iAppSettingService";
 export class IoCFactory {

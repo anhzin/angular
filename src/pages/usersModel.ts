@@ -1,6 +1,6 @@
-import { IGridOption } from "../_shared/components/grid/grid";
-import { PromiseFactory } from "../models/promise";
-import { UserStatus } from "../models/enums";
+import { IGridOption } from "@app/common";
+import { PromiseFactory } from "@app/common";
+import { UserStatus } from "@app/common";
 
 export class UsersModel {
     public options: IGridOption;

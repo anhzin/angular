@@ -1,5 +1,5 @@
 import { IIoCBuilder } from "./iiocBuilder";
-import { ErrorMessages } from "../../../models/enums";
+import { ErrorMessages } from "../../models/enums";
 
 export class SingletonBuilder implements IIoCBuilder {
     public build(registration: IIoCRegistration): any {

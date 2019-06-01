@@ -1,5 +1,5 @@
-import { IGridOption } from "../_shared/components/grid/grid";
-import { PromiseFactory } from "../models/promise";
+import { IGridOption } from "@app/common";
+import { PromiseFactory } from "@app/common";
 
 export class UserGroupsModel {
     public options: IGridOption;

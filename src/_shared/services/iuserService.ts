@@ -1,4 +1,4 @@
-import { Promise } from "../../models/promise";
+import { Promise } from "@app/common";
 import { AddNewUserModel } from "../../pages/addNewUserModel";
 export interface IUserService {
     getUsers(): Promise;

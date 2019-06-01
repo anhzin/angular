@@ -1,7 +1,7 @@
 import { IUserGroupService } from "./iuserGroupService";
-import { Promise } from "../../models/promise";
-import { IConnector } from "../connector/iConnector";
-import { IoCNames } from "../../models/enums";
+import { Promise } from "@app/common";
+import { IConnector } from "@app/common";
+import { IoCNames } from "@app/common";
 export class UserGroupService implements IUserGroupService {
     getUserGroups(): Promise {
         let uri = "rest/api/userGroups";

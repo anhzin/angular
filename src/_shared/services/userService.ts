@@ -1,7 +1,7 @@
 import { IUserService } from "./iuserService";
-import { Promise } from "../../models/promise";
-import { IoCNames } from "../../models/enums";
-import { IConnector } from "../connector/iConnector";
+import { Promise } from "@app/common";
+import { IoCNames } from "@app/common";
+import { IConnector } from "@app/common";
 import { AddNewUserModel } from "../../pages/addNewUserModel";
 export class UserService implements IUserService {
     public getUsers(): Promise {

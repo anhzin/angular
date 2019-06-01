@@ -1,5 +1,5 @@
-import { LanguageCodes } from "../../models/enums";
-import { Promise } from "../../models/promise";
+import { LanguageCodes } from "../models/enums";
+import { Promise } from "../models/promise";
 export interface IResourceManager {
     getLocales(): Array<any>;
     changeLanguageCode(languageCode: LanguageCodes): void;

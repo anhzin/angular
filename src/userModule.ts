@@ -5,39 +5,26 @@ import { UserRoutes } from "./userRoutes";
 import { Layout } from "./layout";
 import { Users } from "../src/pages/users";
 import { UserPreview } from "../src/_shared/components/userPreview";
-import { IAppSettingService } from "./_shared/services/iAppSettingService";
-import { IoCNames } from "./models/enums";
+import { IAppSettingService } from "@app/common";
+import { IoCNames } from "@app/common";
 import { HttpModule } from "@angular/http";
-import { IResourceManager } from "./_shared/services/iresourceManager";
-import { BaseIcon } from "../src/_shared/components/icons/baseIcon";
-import { IconEdit } from "../src/_shared/components/icons/iconEdit";
-import { IconPreview } from "../src/_shared/components/icons/iconPreview";
-import { Page } from "./_shared/components/layout/page";
-import { PageContent } from "./_shared/components/layout/pageContent";
-import { PageCommand } from "./_shared/components/layout/pageCommand";
-import { FormHorizontal } from "./_shared/components/forms/formHorizontal";
-import { FormInputText } from "./_shared/components/forms/formInputText";
-import { FormButtons } from "./_shared/components/forms/formButtons";
-import { PrimaryButton } from "./_shared/components/forms/primaryButton";
-import { DefaultButton } from "./_shared/components/forms/defaultButton";
-import { Validation } from "./_shared/components/validation";
+import { IResourceManager } from "@app/common";
 import { AddNewUser } from "./pages/addNewUser";
-import { Grid } from "./_shared/components/grid/grid";
 import { UserGroups } from "./pages/userGroups";
+import { CommonModule } from "@angular/common";
+import { AppCommonModule } from "./modules/common/appCommon";
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         UserRoutes,
-        HttpModule
+        HttpModule,
+        CommonModule,
+        AppCommonModule
     ],
     declarations: [
-        Layout, Users, UserPreview,
-        BaseIcon, IconEdit, IconPreview,
-        Page, PageContent, PageCommand,
-        FormHorizontal, FormInputText, FormButtons, PrimaryButton, DefaultButton, Validation,
-        AddNewUser, UserGroups,
-        Grid],
+        Layout, Users, UserPreview, AddNewUser, UserGroups
+    ],
     entryComponents: [Layout]
     // bootstrap: [Layout]
 })
@@ -52,7 +39,7 @@ export class UserModule {
 
     ngDoBootstrap() {
         let resourceManage: IResourceManager = window.ioc.resolve(IoCNames.IResourceManager);
-        let locales: any = ["user", "common", "addNewUser","userGroups"];
+        let locales: any = ["user", "common", "addNewUser", "userGroups"];
         resourceManage.loadLocales(locales).then(() => {
             this.appRef.bootstrap(Layout);
         });

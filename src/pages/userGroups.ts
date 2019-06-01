@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
-import { BasePage } from "../models/basePage";
+import { BasePage } from "@app/common";
 import { UserGroupsModel } from "./userGroupsModel";
-import { IoCNames } from "../models/enums";
+import { IoCNames } from "@app/common";
 import { IUserGroupService } from "../_shared/services/iuserGroupService";
 @Component({
     template: `
