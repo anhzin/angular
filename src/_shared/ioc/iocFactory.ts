@@ -1,4 +1,4 @@
-import { ErrorMessages, IoCNames } from "../common/enums";
+import { ErrorMessages, IoCNames } from "../../models/enums";
 import { IoCBuilderFactory } from "../ioc/builder/iocBuilderFactory";
 import { IIoCBuilder } from "./builder/iiocBuilder";
 import {IAppSettingService} from "../services/iAppSettingService";

@@ -15,6 +15,7 @@ declare interface String {
 
 declare interface StringConstructor {
     format(...parameters: string[]): string;
+    toCamelCase(text: string): string;
 }
 
 declare interface Window {

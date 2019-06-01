@@ -38,3 +38,8 @@ export const ValidationStatus = {
 export const ClassConst = {
     Metadata: "__metadata"
 }
+
+export enum UserStatus {
+    Active = 1,
+    InActive = 0
+}

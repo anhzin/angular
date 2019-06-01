@@ -1,4 +1,4 @@
-import { IoCNames, IIoCLifeCycle } from "../common/enums";
+import { IoCNames, IIoCLifeCycle } from "../../models/enums";
 import { UserService } from "../services/userService";
 import { AppSettingService } from "../services/appSettingService";
 import { ConnectorJson } from "../connector/connectorJson";

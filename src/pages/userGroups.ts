@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { BasePage } from "../models/basePage";
 import { UserGroupsModel } from "./userGroupsModel";
-import { IoCNames } from "../_shared/common/enums";
+import { IoCNames } from "../models/enums";
 import { IUserGroupService } from "../_shared/services/iuserGroupService";
 @Component({
     template: `
@@ -31,5 +31,13 @@ export class UserGroups extends BasePage {
 
     public onAddNewUserClicked(): void {
         console.log("add new User Group");
+    }
+
+    public onEditUserClicked(item: any): void {
+        console.log(item);
+    }
+
+    public onDeleteNewUserClicked(item:any): void {
+        console.log(item);
     }
 }

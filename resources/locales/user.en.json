@@ -4,5 +4,13 @@
     "lastName": "Last Name",
     "userName": "User Name",
     "userPreview": "User Preview",
-    "status": "Status"
+    "status": "Status",
+    "edit": "Edit",
+    "delete": "Delete",
+    "active": "Active",
+    "inActive": "In-Active",
+    "userStatus": {
+        "active": "Active",
+        "inActive": "In-Active"
+    }
 }

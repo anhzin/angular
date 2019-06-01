@@ -2,7 +2,7 @@ import { Component, AfterContentInit, DoCheck } from "@angular/core";
 import { BasePage } from "../models/basePage";
 import { IUser } from "../models/user";
 import { IUserService } from "../_shared/services/iuserService";
-import { IoCNames, LanguageCodes, IconSize } from "../_shared/common/enums";
+import { IoCNames, LanguageCodes, IconSize } from "../models/enums";
 import { IResourceManager } from "../_shared/services/iresourceManager";
 import { Router } from "@angular/router";
 import { UsersModel } from "./usersModel";
@@ -31,5 +31,21 @@ export class Users extends BasePage {
     }
     public onAddNewUserClicked(): void {
         this.router.navigate(["addNewUser"]);
+    }
+
+    public onEditUserClicked(item: any): void {
+        console.log(item);
+        //this.router.navigate(["editNewUser"]);
+    }
+    public onDeleteUserClicked(item: any): void {
+        console.log(item);
+    }
+
+    public onActiveUserClicked(item: any): void {
+        console.log(item);
+    }
+
+    public onInActiveUserClicked(item: any): void {
+        console.log(item);
     }
 }

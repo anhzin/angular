@@ -1,4 +1,4 @@
-import { IconSize } from "../../common/enums";
+import { IconSize } from "../../../models/enums";
 import { EventEmitter, Component, Input, Output } from "@angular/core";
 @Component({
     selector: 'base-icon',

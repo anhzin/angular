@@ -6,7 +6,7 @@ import { Layout } from "./layout";
 import { Users } from "../src/pages/users";
 import { UserPreview } from "../src/_shared/components/userPreview";
 import { IAppSettingService } from "./_shared/services/iAppSettingService";
-import { IoCNames } from "./_shared/common/enums";
+import { IoCNames } from "./models/enums";
 import { HttpModule } from "@angular/http";
 import { IResourceManager } from "./_shared/services/iresourceManager";
 import { BaseIcon } from "../src/_shared/components/icons/baseIcon";

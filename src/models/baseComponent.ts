@@ -1,5 +1,5 @@
 import { IResourceManager } from "../_shared/services/iresourceManager";
-import { IoCNames } from "../_shared/common/enums";
+import { IoCNames } from "./enums";
 import guidHelper from "../_shared/helpers/guidHelper";
 
 export class BaseComponent {

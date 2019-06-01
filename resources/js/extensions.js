@@ -51,3 +51,10 @@ String.format = function(format) {
             match;
     });
 };
+
+String.toCamelCase = function(text) {
+    if (!text) {
+        return "";
+    }
+    return text.charAt(0).toLowerCase() + text.slice(1);
+}

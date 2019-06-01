@@ -1,4 +1,4 @@
-import { ClassConst } from "../_shared/common/enums";
+import { ClassConst } from "./enums";
 export class BaseModel {
     public isValid(): boolean {
         let metadata = window.Reflect.getMetadata(ClassConst.Metadata, this.constructor);

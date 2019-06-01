@@ -1,6 +1,6 @@
 import { IUserService } from "./iuserService";
 import { Promise } from "../../models/promise";
-import { IoCNames } from "../common/enums";
+import { IoCNames } from "../../models/enums";
 import { IConnector } from "../connector/iConnector";
 import { AddNewUserModel } from "../../pages/addNewUserModel";
 export class UserService implements IUserService {

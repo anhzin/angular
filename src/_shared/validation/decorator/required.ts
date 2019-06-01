@@ -1,4 +1,4 @@
-import { ClassConst, IoCNames, ValidationStatus } from "../../common/enums";
+import { ClassConst, IoCNames, ValidationStatus } from "../../../models/enums";
 import { IEventManager } from "../../event/ieventManager";
 
 export function required(errorKey: string): any {

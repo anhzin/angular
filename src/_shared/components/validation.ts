@@ -1,5 +1,5 @@
 import { Directive, Input, ElementRef, AfterContentInit } from "@angular/core";
-import { IoCNames, ValidationStatus } from "../common/enums";
+import { IoCNames, ValidationStatus } from "../../models/enums";
 import { IEventManager } from "../event/ieventManager";
 import { BaseComponent } from "../../models/baseComponent";
 

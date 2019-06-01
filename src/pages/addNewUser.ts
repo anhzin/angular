@@ -3,7 +3,7 @@ import { BasePage } from "../models/basePage";
 import { AddNewUserModel } from "./addNewUserModel";
 import { Router } from "@angular/router";
 import { IUserService } from "../_shared/services/iuserService";
-import { IoCNames } from "../_shared/common/enums";
+import { IoCNames } from "../models/enums";
 import { IEventManager } from "../_shared/event/ieventManager";
 
 @Component({
