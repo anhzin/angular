@@ -1,10 +1,11 @@
-import { ErrorMessages } from "../../models/enums";
 import { IIoCBuilder } from "./iiocBuilder";
-export class TransientBuilder implements IIoCBuilder {
-    public build(registration: IIoCRegistration): any {
-        if (!registration) {
-            throw ErrorMessages.InvalidService.format("");
-        }
-        return new registration.instanceOf;
+
+export class TransientBuilder implements IIoCBuilder{
+    private registration:IIoCRegistration;
+    constructor(reg:IIoCRegistration){
+        this.registration=reg;
+    }
+    public build():any{
+        return new this.registration.instanceOf();
     }
 }

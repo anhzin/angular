@@ -1,39 +1,35 @@
-import { ErrorMessages, IoCNames } from "../models/enums";
-import { IoCBuilderFactory } from "./builder/iocBuilderFactory";
-import { IIoCBuilder } from "./builder/iiocBuilder";
-import {IAppSettingService} from "../services/iAppSettingService";
-export class IoCFactory {
-    public static create(): IoCContainer {
+import {IIoCBuilder} from "./builder/iiocBuilder";
+import {IoCBuilderFactory} from "./builder/iocBuilderFactory";
+import {IAppSettingService} from "../services/iappSettingService";
+import { IoCNames } from "../models/enum";
+export class IoCFactory{
+    public static create():IIoCContainer{
         return new IoCContainer();
     }
 }
-
-class IoCContainer implements IIoCContainer {
-    public registrations: Array<IIoCRegistration> = [];
-    public import(registrations: Array<IIoCRegistration>): void {
-        this.registrations = registrations;
+class IoCContainer implements IIoCContainer{
+    private registrations:Array<IIoCRegistration>=[];
+    public import(registrations:Array<IIoCRegistration>):void{
+        this.registrations=registrations;
     }
-
-    public resolve(nameOrType: string): IIoCRegistration {
-        if (typeof (nameOrType) == "function") {
-            return this.processAngularInjection(nameOrType);
+    /**
+     * string: resolve custom ioc
+     * class: resovle angular object
+     */
+    public resolve(nameOrType:any):any{
+        if(typeof nameOrType=="function"){
+            return this.resolveAngularObject(nameOrType);
         }
-        let registration = this.registrations.firstOrDefault((item: IIoCRegistration) => {
-            return item.name == nameOrType;
+        let registraion=this.registrations.firstOrDefault((item: IIoCRegistration)=>{
+            return item.name==nameOrType;
         });
-
-        if (!registration) {
-            throw ErrorMessages.InvalidLifeCycle;
-        }
-
-        let iocBuilder: IIoCBuilder = IoCBuilderFactory.create(registration);
-        return iocBuilder.build(registration);
+        if(!registraion){throw "invalid ... ";}
+        let iocBuilder:IIoCBuilder= IoCBuilderFactory.create(registraion);
+        return iocBuilder.build();
     }
-
-    private processAngularInjection(nameOrType: any): any {
-        let appSettingService: IAppSettingService = window.ioc.resolve(IoCNames.IAppSettingService);
-        let injector = appSettingService.getInjector();
-        return injector.get(nameOrType);
-
+    private resolveAngularObject(type: any):any{
+        let appSettingService:IAppSettingService= window.ioc.resolve(IoCNames.IAppSettingService);
+        let injector:any= appSettingService.getInjector();
+        return injector.get(type);
     }
 }

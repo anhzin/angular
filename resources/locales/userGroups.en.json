@@ -1,7 +1,5 @@
 {
-    "title": "User Groups",
-    "name": "Name",
-    "description": "Description",
-    "edit": "Edit",
-    "delete": "Delete"
+    "title":"User Groups",
+    "name":"Name",
+    "description":"Description"
 }

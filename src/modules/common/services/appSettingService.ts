@@ -1,12 +1,11 @@
-import { IAppSettingService } from "./iAppSettingService";
+import { IAppSettingService } from "./iappSettingService";
 
-export class AppSettingService implements IAppSettingService {
-    public injectors: any;
-    public setInjector(injectors: any): void {
-        this.injectors = injectors;
+export class AppSettingService implements IAppSettingService{
+    private injector: any;
+    public getInjector(): any{
+        return this.injector;
     }
-
-    public getInjector(): any {
-        return this.injectors;
+    public setInjector(injector: any):void{
+        this.injector=injector;
     }
 }

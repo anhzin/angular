@@ -1,9 +1,9 @@
 {
-    "title": "Add New User",
-    "firstName": "First Name",
-    "lastName": "Last Name",
-    "userName": "User Name",
-    "firstNameWasRequired": "First Name was required",
-    "lastNameWasRequired": "Last Name was required",
-    "userNameWasRequired": "User Name was required"
+    "title":"Add new user",
+    "firstName":"First name",
+    "lastName":"Last name",
+    "userName":"User name",
+    "firstNameWasRequired":"First name was required",
+    "lastNameWasRequired":"Last name was required",
+    "userNameWasUsed": "{{user_name}} was used" 
 }

@@ -1,23 +1,21 @@
 import { IEventManager } from "./ieventManager";
-import { IHashable } from "../models/hash/ihashable";
-import { Hashable } from "../models/hash/hashable";
+import { IHashtable } from "../models/hash/ihashtable";
+import { Hashtable } from "../models/hash/hashtable";
 
 export class EventManager implements IEventManager {
-    private keys: IHashable;
+    private keys: IHashtable;
     constructor() {
-        this.keys = new Hashable();
+        this.keys = new Hashtable();
     }
-
-    subscribe(key: string, value: any): void {
-        this.keys.add(key, value);
+    public subscribe(key: string, handler: (arg: any) => void): void {
+        this.keys.add(key, handler);
+        //addNewUser.firstWasRequired, ()=>{alert("");}
     }
-    publish(key: string, options?: any): void {
-        let handler = this.keys.get(key);
+    public publish(key: string, option?: any): void {
+        let handler: any = this.keys.get(key);
         if (!handler) {
-            console.log(key + " was not found");
-            return;
+            console.log(key + " was not found.");
         }
-
-        handler({ key: key, options: options });
+        handler({ key: key, option: option });
     }
 }

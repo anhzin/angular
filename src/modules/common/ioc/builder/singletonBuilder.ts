@@ -1,16 +1,14 @@
 import { IIoCBuilder } from "./iiocBuilder";
-import { ErrorMessages } from "../../models/enums";
 
-export class SingletonBuilder implements IIoCBuilder {
-    public build(registration: IIoCRegistration): any {
-        if (!registration) {
-            throw ErrorMessages.InvalidService.format("");
+export class SingletonBuilder implements IIoCBuilder{
+    private registration:IIoCRegistration;
+    constructor(reg:IIoCRegistration){
+        this.registration=reg;
+    }
+    public build():any{
+        if(!this.registration.instance){
+            this.registration.instance= new this.registration.instanceOf();
         }
-
-        if (!registration.instance) {
-            registration.instance = new registration.instanceOf;
-        }
-
-        return registration.instance;
+        return this.registration.instance;
     }
 }

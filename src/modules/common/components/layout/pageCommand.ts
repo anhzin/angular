@@ -1,9 +1,8 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 
 @Component({
-    selector: "page-command",
-    template: `<ng-content></ng-content>`
+    selector:"page-commands",
+    template:`<ng-content></ng-content>`
 })
-export class PageCommand {
-
+export class PageCommand{
 }

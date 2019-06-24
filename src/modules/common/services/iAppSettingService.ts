@@ -1,4 +1,4 @@
-export interface IAppSettingService {
-    setInjector(injectors: any): void;
+export interface IAppSettingService{
     getInjector(): any;
+    setInjector(injector: any):void;
 }

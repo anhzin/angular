@@ -1,99 +1,89 @@
-import guidHelper from "../../../_shared/helpers/guidHelper";
-
-export class PromiseFactory {
-    public static create(): Promise {
+import guidHelper from "../helpers/guidHelper";
+export class PromiseFactory{
+    public static create():Promise{
         return new Promise();
     }
 }
-
-enum PromiseStatus {
+enum PromiseStatus{
     None = 0,
-    Success = 1,
-    Failed = 2,
+    Fail = 1,
+    Success = 2,
     Subscribe = 3
 }
-
-export class Promise {
-    private data: any = null;
-    private error: any = null;
-    private subscribeCallBack: any;
-    private onError: any = null;
-    private onSuccess: any = null;
-    private onSubscribe: any = null;
-    private status: PromiseStatus = PromiseStatus.None;
-    private queue: Array<string> = [];
-    private id: string = guidHelper.newGuid();
-
-
-    public resolveAll(def: Promise): Promise {
-        let self = this;
-        this.queue.push(def.id);
+export class Promise{
+    private data: any;
+    private resolveCallback: any;
+    private errorCallback: any;
+    private subscribeCallback: any;
+    private errors: any;
+    private status: PromiseStatus=PromiseStatus.None;
+    private queue:Array<string>=[];
+    private id:string = guidHelper.newGuid();
+    public resolveAll(def: Promise):Promise{
+        let self=this;
+        self.queue.push(def.id);
         console.log(this.queue);
-        def.subscribe((pro: Promise) => {
+        def.subscribe((pro: Promise)=>{
             self.onPromiseCompleted(pro);
         }, false);
-        return this;
+        return self;
     }
-
-    private onPromiseCompleted(pro: Promise): Promise {
-        this.queue = this.queue.remove(pro.id);
-        console.log("onPromiseCompleted");
-        if (this.queue.isEmpty()) {
-            this.status = PromiseStatus.Success;
+    public onPromiseCompleted(pro: Promise):Promise{
+        this.queue=this.queue.remove(pro.id);
+        console.log("Oncompleted", this.queue)
+        if(this.queue.isEmpty()){
+            console.log("Empty")
+            this.status=PromiseStatus.Success;
             this.processCallback();
         }
         return this;
     }
-
-    public subscribe(subscribeCallBack: any, isDataOnly: boolean = true): Promise {
-        this.status = PromiseStatus.Subscribe;
-        this.subscribeCallBack = subscribeCallBack;
-        if (isDataOnly) {
-            this.subscribeCallBack = (pro: Promise) => {
-                subscribeCallBack(pro.data);
-            }
+    public subscribe(subscriberCallback: any, isDataOnly:boolean = true):Promise{
+        this.status=PromiseStatus.Subscribe;
+        this.subscribeCallback=subscriberCallback;
+        if(isDataOnly){
+            this.subscribeCallback=(pro: Promise)=>{
+                subscriberCallback(pro.data);
+            };    
         }
         return this;
     }
-    public resolve(data?: any): Promise {
-        this.status = this.status != PromiseStatus.Subscribe ? PromiseStatus.Success : this.status;
-        this.data = data;
+    public error(callback: any):Promise{
+        this.errorCallback=callback;
         this.processCallback();
         return this;
     }
-
-    public then(callback: any): Promise {
-        this.onSuccess = callback;
+    public reject(errors?: any):Promise{
+        this.status=PromiseStatus.Fail;
+        this.errors=errors;
         this.processCallback();
         return this;
     }
-
-
-    public reject(error: any): Promise {
-        this.status = PromiseStatus.Failed;
-        this.error = error;
+    public resolve(data?: any): Promise{
+        this.status=this.status!=PromiseStatus.Subscribe?PromiseStatus.Success:this.status;
+        this.data=data;
         this.processCallback();
         return this;
     }
-
-
-    public catchError(callbackError: any): Promise {
-        this.onError = callbackError;
-        this.processCallback();
-        return this;
-    }
-
-    private processCallback() {
-        if (this.onError && this.status == PromiseStatus.Failed) {
-            this.onError(this.error);
+    private processCallback(){
+        if(this.resolveCallback && this.status==PromiseStatus.Success){
+            this.resolveCallback(this.data);
         }
 
-        if (this.onSuccess && this.status == PromiseStatus.Success) {
-            this.onSuccess(this.data);
+        if(this.errorCallback && this.status==PromiseStatus.Fail){
+            this.errorCallback(this.errors);
         }
 
-        if (this.subscribeCallBack && this.status == PromiseStatus.Subscribe) {
-            this.subscribeCallBack(this);
+        if(this.subscribeCallback && this.status==PromiseStatus.Subscribe){
+            this.subscribeCallback(this);
         }
+    }
+    public then(callback: any): Promise{
+        if(!!this.resolveCallback){
+            console.log("resolvecallback has value");
+        }
+        this.resolveCallback=callback;
+        this.processCallback();
+        return this;
     }
 }

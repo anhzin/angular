@@ -1,19 +1,17 @@
-import { IIoCLifeCycle, ErrorMessages } from "../../models/enums";
-import { SingletonBuilder } from "./singletonBuilder";
-import { TransientBuilder } from "./transientBuilder";
-export class IoCBuilderFactory {
-    public static create(registration: IIoCRegistration): any {
-        if (!registration) {
-            throw ErrorMessages.InvalidService.format("");
-        }
+import { IIoCBuilder } from "./iiocBuilder";
+import {SingletonBuilder} from "./singletonBuilder";
+import {TransientBuilder} from "./transientBuilder";
+import { IoCLifeCycle } from "../../models/enum";
 
-        switch (registration.lifeCycle) {
-            case IIoCLifeCycle.Singleton:
-                return new SingletonBuilder();
-            case IIoCLifeCycle.Transient:
-                return new TransientBuilder();
+export class IoCBuilderFactory{
+    public static create(registration: IIoCRegistration): IIoCBuilder{
+        switch(registration.lifeCycle){
+            case IoCLifeCycle.Singleton:
+                return new SingletonBuilder(registration);
+            case IoCLifeCycle.Transient:
+                return new TransientBuilder(registration);
             default:
-                throw ErrorMessages.InvalidLifeCycle;
+            throw "invalid lifecycle"
         }
     }
 }

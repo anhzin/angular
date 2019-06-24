@@ -1,3 +1,3 @@
-export interface IIoCBuilder {
-    build(registration: IIoCRegistration): any;
+export interface IIoCBuilder{
+    build():any;
 }

@@ -1,7 +1,10 @@
 {
-    "form": {
-        "save": "Save",
-        "cancel": "Cancel"
-
+    "language":{
+        "vn":"VN",
+        "en":"EN"
+    },
+    "form":{
+        "save":"Save",
+        "cancel":"Cancel"
     }
 }
