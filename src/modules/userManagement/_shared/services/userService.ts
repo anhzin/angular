@@ -3,15 +3,19 @@ import {Promise} from "@app/common";
 import {IConnector} from "@app/common";
 import { IoCNames } from "@app/common";
 import { IUserService } from "./iuserService";
-export class UserService implements IUserService {
+import { BaseService } from "src/modules/common/models/baseService";
+export class UserService extends BaseService implements IUserService {
+    constructor(){
+        super("TINYERP.USER.API_ENDPOINT");
+    }
     public getUsers(): Promise {
         let connector: IConnector = window.ioc.resolve(IoCNames.IConnector);
-        let url:string="http://usermanagement.tinyerp.com/api/users";
-        return connector.get(url);
+        let url:string="/users";
+        return connector.get(this.resolve(url));
     }
     public createUser(model: any):Promise{
         let connector: IConnector = window.ioc.resolve(IoCNames.IConnector);
-        let url:string="http://usermanagement.tinyerp.com/api/users";
-        return connector.post(url, model);
+        let url:string="/users";
+        return connector.post(this.resolve(url), model);
     }
 }
