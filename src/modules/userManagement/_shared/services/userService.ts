@@ -6,12 +6,12 @@ import { IUserService } from "./iuserService";
 export class UserService implements IUserService {
     public getUsers(): Promise {
         let connector: IConnector = window.ioc.resolve(IoCNames.IConnector);
-        let url:string="/rest/api/users";
+        let url:string="http://usermanagement.tinyerp.com/api/users";
         return connector.get(url);
     }
     public createUser(model: any):Promise{
         let connector: IConnector = window.ioc.resolve(IoCNames.IConnector);
-        let url:string="/rest/api/users";
+        let url:string="http://usermanagement.tinyerp.com/api/users";
         return connector.post(url, model);
     }
 }

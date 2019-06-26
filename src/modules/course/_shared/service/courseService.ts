@@ -1,9 +1,18 @@
 import { Promise, IConnector, IoCNames } from "@app/common";
-
-export class CourseService {
+import { BaseService } from "../../../common/models/baseService";
+export class CourseService extends BaseService {
+    constructor() {
+        super("TINYERP.COURSE.API_ENDPOINT");
+    }
     public getCourses(): Promise {
-        let url: string = "rest/api/courses";
+        let url: string = "/courses";
         let connector: IConnector = window.ioc.resolve(IoCNames.IConnector);
-        return connector.get(url);
+        return connector.get(this.resolve(url));
+    }
+
+    public createCourse(model: any): Promise {
+        let url: string = "/courses";
+        let connector: IConnector = window.ioc.resolve(IoCNames.IConnector);
+        return connector.post(this.resolve(url), model);
     }
 } 

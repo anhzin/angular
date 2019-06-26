@@ -6,7 +6,7 @@ import { HttpModule } from "@angular/http";
 import { Routes, RouterModule } from "@angular/router";
 import { Layout } from "src/layout";
 import { IAppSettingService, IoCNames, IResourceManager } from "@app/common";
-
+import appConfig from "./config/appConfig";
 let routes: Routes = [
     { path: "", redirectTo: "userManagement", pathMatch: "full" },
     { path: "userManagement", loadChildren: "/src/modules/userManagement/userModule#UserModule" },
@@ -31,6 +31,7 @@ export class AppModule {
     constructor(appRef: ApplicationRef, injector: Injector) {
         let appSettingService: IAppSettingService = window.ioc.resolve(IoCNames.IAppSettingService);
         appSettingService.setInjector(injector);
+        appSettingService.setConfig(appConfig);
         this.appRef = appRef;
     }
 

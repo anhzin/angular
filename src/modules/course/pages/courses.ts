@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { BasePage, IoCNames } from "@app/common";
 import { CoursesModel } from "./coursesModel";
 import {ICourseService} from "../_shared/service/icourseService";
+import { Router } from "@angular/router";
 @Component({
     template: `
             <page [title]="i18n.course.courses.title">
@@ -11,13 +12,14 @@ import {ICourseService} from "../_shared/service/icourseService";
                 <page-content>
                     <grid [options]="model.options"></grid>
                 </page-content>
+                
             </page>
     `
 })
 
 export class Courses extends BasePage {
     public model: CoursesModel;
-    constructor() {
+    constructor(private router:Router) {
         super();
         this.model = new CoursesModel(this);
         this.loadCourses();
@@ -30,5 +32,7 @@ export class Courses extends BasePage {
             self.model.options.dataSource.resolve(courses);
         });
     }
-    public onAddNewCourseClicked(): void { }
+    public onAddNewCourseClicked(): void { 
+        this.router.navigate(["course/addNewCourse"]);
+    }
 }
